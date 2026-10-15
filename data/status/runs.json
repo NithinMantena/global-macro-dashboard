@@ -1,0 +1,66 @@
+[
+  {
+    "id": "2026-10-15T17:42:37.403Z",
+    "started_at": "2026-10-15T17:42:37.403Z",
+    "finished_at": "2026-10-15T17:42:39.617Z",
+    "trigger": "local",
+    "tier": "scheduled",
+    "attempted": 8,
+    "ok": 4,
+    "failed": 4,
+    "new_rows": 0,
+    "revised_rows": 0,
+    "failures": [
+      {
+        "series": "US.I1",
+        "error": "FRED_API_KEY is not set. Add it as a repository secret (or to .env for local runs)."
+      },
+      {
+        "series": "US.L1",
+        "error": "FRED_API_KEY is not set. Add it as a repository secret (or to .env for local runs)."
+      },
+      {
+        "series": "US.R1",
+        "error": "FRED_API_KEY is not set. Add it as a repository secret (or to .env for local runs)."
+      },
+      {
+        "series": "US.R2",
+        "error": "FRED_API_KEY is not set. Add it as a repository secret (or to .env for local runs)."
+      }
+    ]
+  },
+  {
+    "id": "2026-10-15T17:35:44.217Z",
+    "started_at": "2026-10-15T17:35:44.217Z",
+    "finished_at": "2026-10-15T17:35:45.713Z",
+    "trigger": "local",
+    "tier": "all",
+    "attempted": 10,
+    "ok": 5,
+    "failed": 5,
+    "new_rows": 11375,
+    "revised_rows": 0,
+    "failures": [
+      {
+        "series": "US.G1",
+        "error": "FRED_API_KEY is not set. Add it as a repository secret (or to .env for local runs)."
+      },
+      {
+        "series": "US.I1",
+        "error": "FRED_API_KEY is not set. Add it as a repository secret (or to .env for local runs)."
+      },
+      {
+        "series": "US.L1",
+        "error": "FRED_API_KEY is not set. Add it as a repository secret (or to .env for local runs)."
+      },
+      {
+        "series": "US.R1",
+        "error": "FRED_API_KEY is not set. Add it as a repository secret (or to .env for local runs)."
+      },
+      {
+        "series": "US.R2",
+        "error": "FRED_API_KEY is not set. Add it as a repository secret (or to .env for local runs)."
+      }
+    ]
+  }
+]

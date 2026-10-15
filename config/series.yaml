@@ -1,0 +1,162 @@
+# One entry per indicator–economy pair (or global indicator). This is where source identifiers live:
+# never in code. Each key was checked against the live source before being added; `verified` records
+# when and what was seen (PRD 12.3). Phase 0 holds the 10 starter series.
+#
+# id            <economy>.<indicator> (or <indicator> for global series); also the data file name
+# source        fred | dbnomics | eurostat (connectors in pipeline/connectors/)
+# key           fred: series ID · dbnomics: provider/dataset/series · eurostat: dataset?dimension=code&...
+# frequency     D | M | Q | A, the frequency of the stored observations
+# transform     none | yoy | qoq_saar, applied to the stored values to get the displayed value
+# lag_days      typical days from the end of a reference period to its first release; with the
+#               frequency this sets when the series counts as stale (PRD 5.6)
+# schedule      optional override of the refresh schedule (default: daily for D/M, weekly for Q, monthly for A)
+# licence       reuse terms recorded before adding the source (PRD 9.4)
+
+series:
+  # ---------------- United States (FRED) ----------------
+  - id: US.G1
+    indicator: G1
+    economy: US
+    source: fred
+    key: GDPC1
+    frequency: Q
+    transform: yoy
+    source_measure: Real GDP, billions of chained 2017 dollars, seasonally adjusted annual rate
+    seasonal_adjustment: SA
+    lag_days: 32
+    licence: Public domain (BEA); citation requested
+    verified: { on: 2026-10-15, note: "FRED page: Q2 2026 = 24,408.011, last updated 2026-09-30" }
+
+  - id: US.I1
+    indicator: I1
+    economy: US
+    source: fred
+    key: CPIAUCNS
+    frequency: M
+    transform: yoy
+    source_measure: CPI-U all items, index 1982-84=100, not seasonally adjusted
+    seasonal_adjustment: NSA
+    lag_days: 16
+    licence: Public domain (BLS); citation requested
+    verified: { on: 2026-10-15, note: "FRED page: Sep 2026 = 336.940, updated 2026-10-14" }
+    notes: The not-seasonally-adjusted index matches the year-over-year rate BLS publishes as its headline.
+
+  - id: US.L1
+    indicator: L1
+    economy: US
+    source: fred
+    key: UNRATE
+    frequency: M
+    transform: none
+    source_measure: Unemployment rate, %, seasonally adjusted
+    seasonal_adjustment: SA
+    lag_days: 10
+    licence: Public domain (BLS); citation requested
+    verified: { on: 2026-10-15, note: "FRED page: Sep 2026 = 4.2%, updated 2026-10-02" }
+
+  - id: US.R1
+    indicator: R1
+    economy: US
+    source: fred
+    key: DFEDTARU
+    frequency: D
+    transform: none
+    source_measure: Federal funds target range, upper limit, %, daily (7-day)
+    seasonal_adjustment: NSA
+    lag_days: 3
+    licence: Public domain (Federal Reserve Board); citation requested
+    verified: { on: 2026-10-15, note: "FRED page: 4.00% on 2026-10-15" }
+    notes: Starts 2008-12-16, when the Fed moved to a target range. Phase 1 may switch all policy rates to BIS.
+
+  - id: US.R2
+    indicator: R2
+    economy: US
+    source: fred
+    key: DGS10
+    frequency: D
+    transform: none
+    source_measure: 10-year Treasury constant maturity yield, %, daily (business days)
+    seasonal_adjustment: NSA
+    lag_days: 4
+    licence: Public domain (Federal Reserve Board H.15); citation requested
+    verified: { on: 2026-10-15, note: "FRED page: 5.21% on 2026-10-13, updated 2026-10-14" }
+
+  # ---------------- Euro Area (Eurostat direct, ECB via DBnomics) ----------------
+  - id: EA.G1
+    indicator: G1
+    economy: EA
+    source: eurostat
+    key: namq_10_gdp?freq=Q&unit=CLV_PCH_SM&s_adj=SCA&na_item=B1GQ&geo=EA
+    frequency: Q
+    transform: none
+    source_measure: Real GDP (chain-linked volumes), % change on the same quarter a year earlier, seasonally and calendar adjusted
+    seasonal_adjustment: SA
+    lag_days: 50
+    licence: Eurostat, free reuse with attribution
+    verified: { on: 2026-10-15, note: "Eurostat API: 1996-Q1 to 2026-Q2, Q2 2026 = 1.2%; dataset updated 2026-10-15" }
+    notes: >-
+      Fetched from Eurostat directly because DBnomics' Eurostat copy stopped updating in January 2026.
+      The official growth rate is stored rather than levels: geo=EA levels switch from 20 to 21
+      members in 2026 (Bulgaria), so growth computed from levels would be overstated by about 0.5 points.
+
+  - id: EA.I1
+    indicator: I1
+    economy: EA
+    source: eurostat
+    key: prc_hicp_minr?freq=M&unit=RCH_A&coicop18=TOTAL&geo=EA
+    frequency: M
+    transform: none
+    source_measure: HICP all items, annual rate of change, % (ECOICOP ver. 2)
+    seasonal_adjustment: NSA
+    lag_days: 5
+    licence: Eurostat, free reuse with attribution
+    verified: { on: 2026-10-15, note: "Eurostat API: 1997-01 to 2026-09 (flash), Sep 2026 = 3.8%" }
+    notes: >-
+      Eurostat moved the HICP to ECOICOP ver. 2 in 2026; the old prc_hicp_manr dataset ends in
+      December 2025. The official annual rate is stored directly so it matches published headlines.
+
+  - id: EA.L1
+    indicator: L1
+    economy: EA
+    source: eurostat
+    key: une_rt_m?freq=M&s_adj=SA&age=TOTAL&unit=PC_ACT&sex=T&geo=EA21
+    frequency: M
+    transform: none
+    source_measure: Unemployment rate, % of labour force, ages 15-74, seasonally adjusted
+    seasonal_adjustment: SA
+    lag_days: 35
+    licence: Eurostat, free reuse with attribution
+    verified: { on: 2026-10-15, note: "Eurostat API: 2000-01 to 2026-08, Aug 2026 = 6.4%" }
+    notes: >-
+      This dataset has no changing-composition euro area code; EA21 is the current membership and is
+      back-calculated to 2000. Change the code when the euro area next expands.
+
+  - id: EA.R1
+    indicator: R1
+    economy: EA
+    source: dbnomics
+    key: ECB/FM/D.U2.EUR.4F.KR.DFR.LEV
+    frequency: D
+    transform: none
+    source_measure: ECB deposit facility rate, %, daily
+    seasonal_adjustment: NSA
+    lag_days: 7
+    licence: ECB statistics, free reuse with attribution
+    verified: { on: 2026-10-15, note: "DBnomics: 1999-01-01 to 2026-10-12, latest 2.50%, indexed 2026-10-12" }
+    notes: >-
+      The deposit facility rate is the rate the ECB steers policy with. Before 2008 the main
+      refinancing rate was the headline rate, so early history sits below the then-quoted policy rate.
+
+  - id: EA.R2
+    indicator: R2
+    economy: EA
+    source: dbnomics
+    key: ECB/IRS/M.U2.L.L40.CI.0000.EUR.N.Z
+    frequency: M
+    transform: none
+    source_measure: Euro area long-term (10-year) government bond yield for convergence purposes, %, monthly
+    seasonal_adjustment: NSA
+    lag_days: 40
+    licence: ECB statistics, free reuse with attribution
+    verified: { on: 2026-10-15, note: "DBnomics: 1990-12 to 2026-08, Aug 2026 = 3.60%, indexed 2026-10-01" }
+    notes: GDP-weighted average of member states' 10-year government bond yields.

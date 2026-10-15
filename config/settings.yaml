@@ -1,0 +1,53 @@
+# Analytics thresholds, windows and pipeline behaviour (PRD 5 and 9). Tune here, not in code.
+
+percentile:
+  window_years: 20      # trailing window for percentile and z-score
+  min_years: 10         # less history than this is flagged as a short window
+  # Upper bounds of each band, in percentile points (PRD 5.1)
+  bands:
+    - { below: 10, label: Very low }
+    - { below: 25, label: Low }
+    - { upto: 75, label: Normal }
+    - { upto: 90, label: High }
+    - { upto: 100, label: Very high }
+
+trend:
+  # Months back for the short / headline / long comparison (PRD 5.2). Quarterly series land on
+  # 1, 2 and 4 quarters back; annual series use years.
+  lookback_months: [3, 6, 12]
+  annual_lookback_months: [12, 24, 36]
+  headline: 6
+  annual_headline: 12
+  # For daily series, the comparison point is the last observation on or before the target date,
+  # if one exists within this many days.
+  daily_max_gap_days: 10
+
+stale:
+  # A series is stale when no new observation has arrived within this multiple of its publication
+  # interval plus its normal lag (PRD 5.6), measured from the end of the newest period.
+  interval_multiple: 1.5
+  default_lag_days: { D: 4, M: 45, Q: 90, A: 180 }
+
+revisions:
+  # Relative tolerance when comparing a fetched value with the stored one, so float noise from a
+  # source does not count as a revision.
+  tolerance: 1.0e-9
+
+fetch:
+  timeout_seconds: 60
+  retries: 3            # retries after the first attempt, with exponential backoff
+  concurrency: 4
+
+schedule:
+  # The workflow runs daily at 06:00 UTC (PRD 9.2). Each run refreshes the daily tier; Mondays add
+  # the weekly tier (quarterly series and files); the 1st of each month adds the monthly tier.
+  weekly_on: 1          # 0 = Sunday, 1 = Monday (UTC)
+  monthly_on: 1         # day of month (UTC)
+  default_by_frequency: { D: daily, M: daily, Q: weekly, A: monthly }
+
+status:
+  keep_runs: 120        # run summaries kept in data/status/runs.json
+
+site:
+  repo: NithinMantena/global-macro-dashboard
+  refresh_workflow: refresh.yml

@@ -1,0 +1,236 @@
+{
+  "US.G1": {
+    "series": "US.G1",
+    "observations": 0,
+    "latest": null,
+    "changes": {},
+    "trends": {},
+    "trend": null,
+    "percentile": null,
+    "band": null,
+    "z_score": null,
+    "window_start": null,
+    "short_window": false,
+    "stress": null,
+    "stale": true,
+    "stale_after": null,
+    "last_change": null
+  },
+  "US.I1": {
+    "series": "US.I1",
+    "observations": 0,
+    "latest": null,
+    "changes": {},
+    "trends": {},
+    "trend": null,
+    "percentile": null,
+    "band": null,
+    "z_score": null,
+    "window_start": null,
+    "short_window": false,
+    "stress": null,
+    "stale": true,
+    "stale_after": null,
+    "last_change": null
+  },
+  "US.L1": {
+    "series": "US.L1",
+    "observations": 0,
+    "latest": null,
+    "changes": {},
+    "trends": {},
+    "trend": null,
+    "percentile": null,
+    "band": null,
+    "z_score": null,
+    "window_start": null,
+    "short_window": false,
+    "stress": null,
+    "stale": true,
+    "stale_after": null,
+    "last_change": null
+  },
+  "US.R1": {
+    "series": "US.R1",
+    "observations": 0,
+    "latest": null,
+    "changes": {},
+    "trends": {},
+    "trend": null,
+    "percentile": null,
+    "band": null,
+    "z_score": null,
+    "window_start": null,
+    "short_window": false,
+    "stress": null,
+    "stale": true,
+    "stale_after": null,
+    "last_change": null
+  },
+  "US.R2": {
+    "series": "US.R2",
+    "observations": 0,
+    "latest": null,
+    "changes": {},
+    "trends": {},
+    "trend": null,
+    "percentile": null,
+    "band": null,
+    "z_score": null,
+    "window_start": null,
+    "short_window": false,
+    "stress": null,
+    "stale": true,
+    "stale_after": null,
+    "last_change": null
+  },
+  "EA.G1": {
+    "series": "EA.G1",
+    "observations": 122,
+    "latest": {
+      "period": "2026-04-01",
+      "value": 1.2,
+      "first_seen": "2026-10-15"
+    },
+    "changes": {
+      "3m": 0.6,
+      "6m": 0.1,
+      "12m": -0.2
+    },
+    "trends": {
+      "3m": "rising",
+      "6m": "flat",
+      "12m": "falling"
+    },
+    "trend": "flat",
+    "percentile": 38.9,
+    "band": "Normal",
+    "z_score": 0.01,
+    "window_start": "2006-04-01",
+    "short_window": false,
+    "stress": "normal",
+    "stale": false,
+    "stale_after": "2027-01-04",
+    "last_change": null
+  },
+  "EA.I1": {
+    "series": "EA.I1",
+    "observations": 357,
+    "latest": {
+      "period": "2026-09-01",
+      "value": 3.8,
+      "first_seen": "2026-10-15"
+    },
+    "changes": {
+      "3m": 1,
+      "6m": 1.2,
+      "12m": 1.6
+    },
+    "trends": {
+      "3m": "rising",
+      "6m": "rising",
+      "12m": "rising"
+    },
+    "trend": "rising",
+    "percentile": 88.8,
+    "band": "High",
+    "z_score": 0.81,
+    "window_start": "2006-09-01",
+    "short_window": false,
+    "stress": "elevated",
+    "stale": false,
+    "stale_after": "2026-11-21",
+    "last_change": null
+  },
+  "EA.L1": {
+    "series": "EA.L1",
+    "observations": 320,
+    "latest": {
+      "period": "2026-08-01",
+      "value": 6.4,
+      "first_seen": "2026-10-15"
+    },
+    "changes": {
+      "3m": 0,
+      "6m": 0,
+      "12m": 0.1
+    },
+    "trends": {
+      "3m": "flat",
+      "6m": "flat",
+      "12m": "rising"
+    },
+    "trend": "flat",
+    "percentile": 10,
+    "band": "Low",
+    "z_score": -1.25,
+    "window_start": "2006-08-01",
+    "short_window": false,
+    "stress": "normal",
+    "stale": false,
+    "stale_after": "2026-11-21",
+    "last_change": null
+  },
+  "EA.R1": {
+    "series": "EA.R1",
+    "observations": 10147,
+    "latest": {
+      "period": "2026-10-12",
+      "value": 2.5,
+      "first_seen": "2026-10-15"
+    },
+    "changes": {
+      "3m": 0.25,
+      "6m": 0.5,
+      "12m": 0.5
+    },
+    "trends": {
+      "3m": "rising",
+      "6m": "rising",
+      "12m": "rising"
+    },
+    "trend": "rising",
+    "percentile": 80,
+    "band": "High",
+    "z_score": 1.17,
+    "window_start": "2006-10-12",
+    "short_window": false,
+    "stress": null,
+    "stale": false,
+    "stale_after": "2026-10-22",
+    "last_change": {
+      "date": "2026-09-16",
+      "from": 2.25,
+      "to": 2.5
+    }
+  },
+  "EA.R2": {
+    "series": "EA.R2",
+    "observations": 429,
+    "latest": {
+      "period": "2026-08-01",
+      "value": 3.60263260313,
+      "first_seen": "2026-10-15"
+    },
+    "changes": {
+      "3m": 0.1569,
+      "6m": 0.4834,
+      "12m": 0.479
+    },
+    "trends": {
+      "3m": "rising",
+      "6m": "rising",
+      "12m": "rising"
+    },
+    "trend": "rising",
+    "percentile": 71.6,
+    "band": "Normal",
+    "z_score": 0.78,
+    "window_start": "2006-08-01",
+    "short_window": false,
+    "stress": "normal",
+    "stale": false,
+    "stale_after": "2026-11-26",
+    "last_change": null
+  }
+}

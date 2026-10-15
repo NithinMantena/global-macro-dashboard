@@ -1,0 +1,477 @@
+# Indicator definitions (PRD sections 4.2, 4.3 and 5). Adding an indicator needs an entry here,
+# a content file (Phase 1) and series entries in series.yaml. No code change.
+#
+# scope             economy = measured per economy; global = one market-wide series (M1-M9)
+# unit              unit of the displayed value
+# display_transform how the PRD wants it shown (descriptive; the series' `transform` does the maths)
+# reference_line    a level with fixed meaning that charts must draw. kind: fixed | inflation_target
+# stress_direction  which side is concerning (PRD 5.3): high | low | both | none
+# deadband          a change smaller than this is "flat" (PRD 5.2). deadband_type: absolute (in display
+#                   units, the default) or relative (in % of the previous value, for prices and levels)
+# derived           computed from other series rather than fetched (R3, R4)
+# track_last_change show the date of the last change (policy rates)
+# phase             delivery phase in which the indicator first gets data
+
+indicators:
+  # ---------------- Growth ----------------
+  - id: G1
+    name: Real GDP growth
+    short_name: GDP growth
+    category: growth
+    scope: economy
+    frequency: Q
+    unit: "% y/y"
+    display_transform: "% change year over year; also quarter over quarter annualized"
+    reference_line: { value: 0, label: "0%", kind: fixed }
+    stress_direction: low
+    deadband: 0.2
+    decimals: 1
+    phase: 0
+
+  - id: G2
+    name: Composite leading indicator
+    short_name: Leading indicator
+    category: growth
+    scope: economy
+    frequency: M
+    unit: index
+    display_transform: Index level and 6-month change
+    reference_line: { value: 100, label: "100 = long-run trend", kind: fixed }
+    stress_direction: low
+    deadband: 0.1
+    decimals: 1
+    phase: 1
+
+  - id: G3
+    name: Business confidence (manufacturing)
+    short_name: Business confidence
+    category: growth
+    scope: economy
+    frequency: M
+    unit: index
+    display_transform: Index level
+    reference_line: { value: 100, label: "100 (OECD; 50 for a PMI)", kind: fixed }
+    stress_direction: low
+    deadband: 0.3
+    decimals: 1
+    phase: 1
+    notes: Reference line is 100 for OECD confidence and 50 for a PMI; a series can override it.
+
+  - id: G4
+    name: Industrial production
+    short_name: Industrial production
+    category: growth
+    scope: economy
+    frequency: M
+    unit: "% y/y"
+    display_transform: "% change year over year"
+    reference_line: { value: 0, label: "0%", kind: fixed }
+    stress_direction: low
+    deadband: 0.5
+    decimals: 1
+    phase: 1
+
+  - id: G5
+    name: Retail sales volume
+    short_name: Retail sales
+    category: growth
+    scope: economy
+    frequency: M
+    unit: "% y/y"
+    display_transform: "% change year over year"
+    reference_line: { value: 0, label: "0%", kind: fixed }
+    stress_direction: low
+    deadband: 0.5
+    decimals: 1
+    phase: 1
+
+  - id: G6
+    name: Exports (in USD)
+    short_name: Exports
+    category: growth
+    scope: economy
+    frequency: M
+    unit: "% y/y"
+    display_transform: "% change year over year"
+    reference_line: { value: 0, label: "0%", kind: fixed }
+    stress_direction: low
+    deadband: 1.0
+    decimals: 1
+    phase: 1
+
+  # ---------------- Inflation ----------------
+  - id: I1
+    name: Headline consumer prices (CPI)
+    short_name: Headline inflation
+    category: inflation
+    scope: economy
+    frequency: M
+    unit: "% y/y"
+    display_transform: "% change year over year"
+    reference_line: { label: Central bank target, kind: inflation_target }
+    stress_direction: both
+    deadband: 0.1
+    decimals: 1
+    phase: 0
+
+  - id: I2
+    name: Core consumer prices (excl. food and energy)
+    short_name: Core inflation
+    category: inflation
+    scope: economy
+    frequency: M
+    unit: "% y/y"
+    display_transform: "% change year over year"
+    reference_line: { label: Central bank target, kind: inflation_target }
+    stress_direction: both
+    deadband: 0.1
+    decimals: 1
+    phase: 1
+
+  - id: I3
+    name: Wage growth
+    short_name: Wage growth
+    category: inflation
+    scope: economy
+    frequency: M
+    unit: "% y/y"
+    display_transform: "% change year over year"
+    reference_line: null
+    stress_direction: both
+    deadband: 0.2
+    decimals: 1
+    phase: 1
+    notes: Monthly or quarterly depending on the economy.
+
+  # ---------------- Labor ----------------
+  - id: L1
+    name: Unemployment rate
+    short_name: Unemployment
+    category: labor
+    scope: economy
+    frequency: M
+    unit: "%"
+    display_transform: Level (%) and 12-month change
+    reference_line: null
+    stress_direction: high
+    deadband: 0.1
+    decimals: 1
+    phase: 0
+
+  # ---------------- Rates ----------------
+  - id: R1
+    name: Central bank policy rate
+    short_name: Policy rate
+    category: rates
+    scope: economy
+    frequency: D
+    unit: "%"
+    display_transform: Level (%) and date of last change
+    reference_line: null
+    stress_direction: none
+    deadband: 0.01
+    decimals: 2
+    track_last_change: true
+    phase: 0
+    notes: Stored daily; changes only on policy decisions.
+
+  - id: R2
+    name: 10-year government bond yield
+    short_name: 10-year yield
+    category: rates
+    scope: economy
+    frequency: M
+    unit: "%"
+    display_transform: Level (%)
+    reference_line: null
+    stress_direction: both
+    deadband: 0.1
+    decimals: 2
+    phase: 0
+    notes: Daily where the source allows (US), otherwise monthly.
+
+  - id: R3
+    name: Yield curve (10-year minus 3-month)
+    short_name: Yield curve
+    category: rates
+    scope: economy
+    frequency: M
+    unit: pp
+    display_transform: Spread in percentage points (derived)
+    reference_line: { value: 0, label: "0 = inversion", kind: fixed }
+    stress_direction: low
+    deadband: 0.1
+    decimals: 2
+    derived: true
+    phase: 1
+
+  - id: R4
+    name: Real policy rate
+    short_name: Real policy rate
+    category: rates
+    scope: economy
+    frequency: M
+    unit: pp
+    display_transform: Policy rate minus headline CPI (derived)
+    reference_line: { value: 0, label: "0", kind: fixed }
+    stress_direction: both
+    deadband: 0.1
+    decimals: 2
+    derived: true
+    phase: 1
+
+  # ---------------- Credit and housing ----------------
+  - id: C1
+    name: Private credit to GDP and credit gap
+    short_name: Credit gap
+    category: credit
+    scope: economy
+    frequency: Q
+    unit: "% of GDP"
+    display_transform: "% of GDP; gap in percentage points"
+    reference_line: { value: 0, label: "0 (gap)", kind: fixed }
+    stress_direction: high
+    deadband: 0.5
+    decimals: 1
+    phase: 1
+
+  - id: C2
+    name: Real house prices
+    short_name: Real house prices
+    category: credit
+    scope: economy
+    frequency: Q
+    unit: "% y/y"
+    display_transform: "% change year over year"
+    reference_line: { value: 0, label: "0%", kind: fixed }
+    stress_direction: both
+    deadband: 0.5
+    decimals: 1
+    phase: 1
+
+  # ---------------- External ----------------
+  - id: X1
+    name: Exchange rate vs US dollar
+    short_name: FX vs USD
+    category: external
+    scope: economy
+    frequency: D
+    unit: per USD
+    display_transform: Level and % change over 12 months
+    reference_line: null
+    stress_direction: none
+    deadband: 1.0
+    deadband_type: relative
+    decimals: 4
+    phase: 1
+
+  - id: X2
+    name: Current account balance
+    short_name: Current account
+    category: external
+    scope: economy
+    frequency: Q
+    unit: "% of GDP"
+    display_transform: "% of GDP"
+    reference_line: { value: 0, label: "0", kind: fixed }
+    stress_direction: low
+    deadband: 0.3
+    decimals: 1
+    phase: 1
+    notes: Quarterly or annual depending on the economy.
+
+  # ---------------- Fiscal ----------------
+  - id: F1
+    name: Government gross debt
+    short_name: Government debt
+    category: fiscal
+    scope: economy
+    frequency: A
+    unit: "% of GDP"
+    display_transform: "% of GDP"
+    reference_line: null
+    stress_direction: high
+    deadband: 1.0
+    decimals: 1
+    phase: 1
+
+  - id: F2
+    name: Government budget balance
+    short_name: Budget balance
+    category: fiscal
+    scope: economy
+    frequency: A
+    unit: "% of GDP"
+    display_transform: "% of GDP"
+    reference_line: { value: 0, label: "0", kind: fixed }
+    stress_direction: low
+    deadband: 0.3
+    decimals: 1
+    phase: 1
+
+  # ---------------- Sentiment ----------------
+  - id: S1
+    name: Consumer confidence
+    short_name: Consumer confidence
+    category: sentiment
+    scope: economy
+    frequency: M
+    unit: index
+    display_transform: Index level
+    reference_line: { value: 100, label: "100 (OECD)", kind: fixed }
+    stress_direction: low
+    deadband: 0.3
+    decimals: 1
+    phase: 1
+
+  # ---------------- Valuation ----------------
+  - id: V1
+    name: Equity market valuation
+    short_name: Equity valuation
+    category: valuation
+    scope: economy
+    frequency: M
+    unit: P/E
+    display_transform: CAPE or forward P/E of the main index, with 20-year percentile
+    reference_line: { label: Long-run median, kind: fixed }
+    stress_direction: high
+    deadband: 2.0
+    deadband_type: relative
+    decimals: 1
+    phase: 3
+    notes: No reliable free API; manual entry or licensed data (Phase 3).
+
+  # ---------------- Global markets (M1-M9) ----------------
+  - id: M1
+    name: Brent crude oil
+    short_name: Brent oil
+    category: markets
+    scope: global
+    frequency: D
+    unit: USD/bbl
+    display_transform: USD per barrel; % change over 12 months
+    reference_line: null
+    stress_direction: none
+    deadband: 2.0
+    deadband_type: relative
+    decimals: 1
+    phase: 1
+
+  - id: M2
+    name: Natural gas (US Henry Hub and European TTF)
+    short_name: Natural gas
+    category: markets
+    scope: global
+    frequency: D
+    unit: local price units
+    display_transform: Local price units; % change over 12 months
+    reference_line: null
+    stress_direction: none
+    deadband: 2.0
+    deadband_type: relative
+    decimals: 2
+    phase: 1
+    notes: Two series (Henry Hub daily, TTF monthly).
+
+  - id: M3
+    name: Copper
+    short_name: Copper
+    category: markets
+    scope: global
+    frequency: M
+    unit: USD/tonne
+    display_transform: USD per tonne; % change over 12 months
+    reference_line: null
+    stress_direction: none
+    deadband: 2.0
+    deadband_type: relative
+    decimals: 0
+    phase: 1
+
+  - id: M4
+    name: Gold
+    short_name: Gold
+    category: markets
+    scope: global
+    frequency: M
+    unit: USD/oz
+    display_transform: USD per ounce
+    reference_line: null
+    stress_direction: none
+    deadband: 2.0
+    deadband_type: relative
+    decimals: 0
+    phase: 1
+
+  - id: M5
+    name: US dollar, broad trade-weighted index
+    short_name: US dollar index
+    category: markets
+    scope: global
+    frequency: D
+    unit: index
+    display_transform: Index level; % change over 12 months
+    reference_line: null
+    stress_direction: none
+    deadband: 1.0
+    deadband_type: relative
+    decimals: 1
+    phase: 1
+
+  - id: M6
+    name: US high-yield corporate bond spread
+    short_name: High-yield spread
+    category: markets
+    scope: global
+    frequency: D
+    unit: pp
+    display_transform: Percentage points over Treasuries
+    reference_line: null
+    stress_direction: high
+    deadband: 0.1
+    decimals: 2
+    phase: 1
+    notes: ICE BofA data on FRED; check reproduction terms before publishing on the public site.
+
+  - id: M7
+    name: US investment-grade corporate bond spread
+    short_name: Investment-grade spread
+    category: markets
+    scope: global
+    frequency: D
+    unit: pp
+    display_transform: Percentage points over Treasuries
+    reference_line: null
+    stress_direction: high
+    deadband: 0.05
+    decimals: 2
+    phase: 1
+    notes: ICE BofA data on FRED; check reproduction terms before publishing on the public site.
+
+  - id: M8
+    name: US 10-year real yield
+    short_name: US real yield
+    category: markets
+    scope: global
+    frequency: D
+    unit: "%"
+    display_transform: Level (%)
+    reference_line: null
+    stress_direction: high
+    deadband: 0.1
+    decimals: 2
+    phase: 1
+
+  - id: M9
+    name: Global supply chain pressure
+    short_name: Supply chain pressure
+    category: markets
+    scope: global
+    frequency: M
+    unit: std. dev.
+    display_transform: Standard deviations from average
+    reference_line: { value: 0, label: "0 = average", kind: fixed }
+    stress_direction: high
+    deadband: 0.1
+    decimals: 2
+    phase: 1

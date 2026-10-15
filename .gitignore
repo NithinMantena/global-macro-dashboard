@@ -1,0 +1,8 @@
+node_modules/
+dist/
+# Generated from data/ by scripts/build-data.ts on every build
+public/data/
+.env
+*.log
+.DS_Store
+Thumbs.db
