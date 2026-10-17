@@ -173,11 +173,11 @@
   },
   "EA.R1": {
     "series": "EA.R1",
-    "observations": 10147,
+    "observations": 10152,
     "latest": {
-      "period": "2026-10-12",
+      "period": "2026-10-17",
       "value": 2.5,
-      "first_seen": "2026-10-15"
+      "first_seen": "2026-10-17"
     },
     "changes": {
       "3m": 0.25,
@@ -193,11 +193,11 @@
     "percentile": 80,
     "band": "High",
     "z_score": 1.17,
-    "window_start": "2006-10-12",
+    "window_start": "2006-10-17",
     "short_window": false,
     "stress": null,
     "stale": false,
-    "stale_after": "2026-10-22",
+    "stale_after": "2026-10-27",
     "last_change": {
       "date": "2026-09-16",
       "from": 2.25,
@@ -206,16 +206,16 @@
   },
   "EA.R2": {
     "series": "EA.R2",
-    "observations": 429,
+    "observations": 430,
     "latest": {
-      "period": "2026-08-01",
-      "value": 3.60263260313,
-      "first_seen": "2026-10-15"
+      "period": "2026-09-01",
+      "value": 3.92837511131,
+      "first_seen": "2026-10-17"
     },
     "changes": {
-      "3m": 0.1569,
-      "6m": 0.4834,
-      "12m": 0.479
+      "3m": 0.561,
+      "6m": 0.588,
+      "12m": 0.7772
     },
     "trends": {
       "3m": "rising",
@@ -223,14 +223,14 @@
       "12m": "rising"
     },
     "trend": "rising",
-    "percentile": 71.6,
-    "band": "Normal",
-    "z_score": 0.78,
-    "window_start": "2006-08-01",
+    "percentile": 80.7,
+    "band": "High",
+    "z_score": 1,
+    "window_start": "2006-09-01",
     "short_window": false,
-    "stress": "normal",
+    "stress": "elevated",
     "stale": false,
-    "stale_after": "2026-11-26",
+    "stale_after": "2026-12-26",
     "last_change": null
   }
 }
