@@ -16,11 +16,11 @@
   },
   "US.I1": {
     "source_key": null,
-    "last_attempt": "2026-10-23T11:16:33.306Z",
+    "last_attempt": "2026-10-24T10:35:47.469Z",
     "last_success": null,
     "result": "error",
     "error": "FRED_API_KEY is not set. Add it as a repository secret (or to .env for local runs).",
-    "consecutive_failures": 11,
+    "consecutive_failures": 12,
     "new_rows": 0,
     "revised_rows": 0,
     "total_rows": 0,
@@ -31,11 +31,11 @@
   },
   "US.L1": {
     "source_key": null,
-    "last_attempt": "2026-10-23T11:16:33.306Z",
+    "last_attempt": "2026-10-24T10:35:47.469Z",
     "last_success": null,
     "result": "error",
     "error": "FRED_API_KEY is not set. Add it as a repository secret (or to .env for local runs).",
-    "consecutive_failures": 11,
+    "consecutive_failures": 12,
     "new_rows": 0,
     "revised_rows": 0,
     "total_rows": 0,
@@ -46,11 +46,11 @@
   },
   "US.R1": {
     "source_key": null,
-    "last_attempt": "2026-10-23T11:16:33.306Z",
+    "last_attempt": "2026-10-24T10:35:47.469Z",
     "last_success": null,
     "result": "error",
     "error": "FRED_API_KEY is not set. Add it as a repository secret (or to .env for local runs).",
-    "consecutive_failures": 11,
+    "consecutive_failures": 12,
     "new_rows": 0,
     "revised_rows": 0,
     "total_rows": 0,
@@ -61,11 +61,11 @@
   },
   "US.R2": {
     "source_key": null,
-    "last_attempt": "2026-10-23T11:16:33.306Z",
+    "last_attempt": "2026-10-24T10:35:47.469Z",
     "last_success": null,
     "result": "error",
     "error": "FRED_API_KEY is not set. Add it as a repository secret (or to .env for local runs).",
-    "consecutive_failures": 11,
+    "consecutive_failures": 12,
     "new_rows": 0,
     "revised_rows": 0,
     "total_rows": 0,
@@ -91,8 +91,8 @@
   },
   "EA.I1": {
     "source_key": "eurostat:prc_hicp_minr?freq=M&unit=RCH_A&coicop18=TOTAL&geo=EA",
-    "last_attempt": "2026-10-23T11:16:33.306Z",
-    "last_success": "2026-10-23T11:16:33.306Z",
+    "last_attempt": "2026-10-24T10:35:47.469Z",
+    "last_success": "2026-10-24T10:35:47.469Z",
     "result": "ok",
     "error": null,
     "consecutive_failures": 0,
@@ -102,12 +102,12 @@
     "oldest_period": "1997-01-01",
     "newest_period": "2026-09-01",
     "source_updated": "2026-10-16T23:00:00+0200",
-    "duration_ms": 523
+    "duration_ms": 906
   },
   "EA.L1": {
     "source_key": "eurostat:une_rt_m?freq=M&s_adj=SA&age=TOTAL&unit=PC_ACT&sex=T&geo=EA21",
-    "last_attempt": "2026-10-23T11:16:33.353Z",
-    "last_success": "2026-10-23T11:16:33.353Z",
+    "last_attempt": "2026-10-24T10:35:47.512Z",
+    "last_success": "2026-10-24T10:35:47.512Z",
     "result": "ok",
     "error": null,
     "consecutive_failures": 0,
@@ -117,12 +117,12 @@
     "oldest_period": "2000-01-01",
     "newest_period": "2026-08-01",
     "source_updated": "2026-10-21T11:00:00+0200",
-    "duration_ms": 480
+    "duration_ms": 871
   },
   "EA.R1": {
     "source_key": "dbnomics:ECB/FM/D.U2.EUR.4F.KR.DFR.LEV",
-    "last_attempt": "2026-10-23T11:16:33.354Z",
-    "last_success": "2026-10-23T11:16:33.354Z",
+    "last_attempt": "2026-10-24T10:35:47.513Z",
+    "last_success": "2026-10-24T10:35:47.513Z",
     "result": "ok",
     "error": null,
     "consecutive_failures": 0,
@@ -132,12 +132,12 @@
     "oldest_period": "1999-01-01",
     "newest_period": "2026-10-17",
     "source_updated": "2026-10-12T06:54:50.256Z",
-    "duration_ms": 1281
+    "duration_ms": 1981
   },
   "EA.R2": {
     "source_key": "dbnomics:ECB/IRS/M.U2.L.L40.CI.0000.EUR.N.Z",
-    "last_attempt": "2026-10-23T11:16:33.355Z",
-    "last_success": "2026-10-23T11:16:33.355Z",
+    "last_attempt": "2026-10-24T10:35:47.514Z",
+    "last_success": "2026-10-24T10:35:47.514Z",
     "result": "ok",
     "error": null,
     "consecutive_failures": 0,
@@ -147,6 +147,6 @@
     "oldest_period": "1990-12-01",
     "newest_period": "2026-09-01",
     "source_updated": "2026-10-01T05:51:32.938Z",
-    "duration_ms": 766
+    "duration_ms": 1244
   }
 }
