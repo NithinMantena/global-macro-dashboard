@@ -173,11 +173,11 @@
   },
   "EA.R1": {
     "series": "EA.R1",
-    "observations": 10165,
+    "observations": 10166,
     "latest": {
-      "period": "2026-10-30",
+      "period": "2026-10-31",
       "value": 2.5,
-      "first_seen": "2026-10-30"
+      "first_seen": "2026-11-01"
     },
     "changes": {
       "3m": 0.25,
@@ -193,11 +193,11 @@
     "percentile": 79.9,
     "band": "High",
     "z_score": 1.17,
-    "window_start": "2006-10-30",
+    "window_start": "2006-10-31",
     "short_window": false,
     "stress": null,
     "stale": false,
-    "stale_after": "2026-11-09",
+    "stale_after": "2026-11-10",
     "last_change": {
       "date": "2026-09-16",
       "from": 2.25,
