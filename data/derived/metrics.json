@@ -86,31 +86,31 @@
   },
   "EA.G1": {
     "series": "EA.G1",
-    "observations": 122,
+    "observations": 123,
     "latest": {
-      "period": "2026-04-01",
-      "value": 1.2,
-      "first_seen": "2026-10-15"
+      "period": "2026-07-01",
+      "value": 1.3,
+      "first_seen": "2026-11-02"
     },
     "changes": {
-      "3m": 0.6,
-      "6m": 0.1,
-      "12m": -0.2
+      "3m": 0.1,
+      "6m": 0.7,
+      "12m": 0.2
     },
     "trends": {
-      "3m": "rising",
-      "6m": "flat",
-      "12m": "falling"
+      "3m": "flat",
+      "6m": "rising",
+      "12m": "rising"
     },
-    "trend": "flat",
-    "percentile": 40.1,
+    "trend": "rising",
+    "percentile": 44.4,
     "band": "Normal",
-    "z_score": 0.01,
-    "window_start": "2006-04-01",
+    "z_score": 0.05,
+    "window_start": "2006-07-01",
     "short_window": false,
     "stress": "normal",
     "stale": false,
-    "stale_after": "2027-01-04",
+    "stale_after": "2027-04-06",
     "last_change": null
   },
   "EA.I1": {
