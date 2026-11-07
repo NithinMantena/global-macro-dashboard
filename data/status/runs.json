@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-11-07T12:42:24.647Z",
+    "started_at": "2026-11-07T12:42:24.647Z",
+    "finished_at": "2026-11-07T12:42:26.278Z",
+    "trigger": "schedule",
+    "tier": "scheduled",
+    "attempted": 8,
+    "ok": 4,
+    "failed": 4,
+    "new_rows": 0,
+    "revised_rows": 0,
+    "failures": [
+      {
+        "series": "US.I1",
+        "error": "FRED_API_KEY is not set. Add it as a repository secret (or to .env for local runs)."
+      },
+      {
+        "series": "US.L1",
+        "error": "FRED_API_KEY is not set. Add it as a repository secret (or to .env for local runs)."
+      },
+      {
+        "series": "US.R1",
+        "error": "FRED_API_KEY is not set. Add it as a repository secret (or to .env for local runs)."
+      },
+      {
+        "series": "US.R2",
+        "error": "FRED_API_KEY is not set. Add it as a repository secret (or to .env for local runs)."
+      }
+    ]
+  },
+  {
     "id": "2026-11-06T13:58:12.660Z",
     "started_at": "2026-11-06T13:58:12.660Z",
     "finished_at": "2026-11-06T13:58:14.285Z",
