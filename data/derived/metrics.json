@@ -196,7 +196,7 @@
     "window_start": "2006-10-31",
     "short_window": false,
     "stress": null,
-    "stale": false,
+    "stale": true,
     "stale_after": "2026-11-10",
     "last_change": {
       "date": "2026-09-16",
